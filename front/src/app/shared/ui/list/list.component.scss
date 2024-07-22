@@ -1,0 +1,116 @@
+:host ::ng-deep {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center;     /* Centre verticalement */
+  padding-top: 3rem;
+  position: relative;
+  .p-dataview {
+    height: 100%;
+    width: 55rem; /* Largeur fixe souhaitée */
+
+    .p-dataview-header {
+      .form-control-container {
+        display: flex;
+        justify-content: space-between;
+
+        .h-45 {
+          height: 45px;
+
+          input {
+            height: 45px;
+            display: block;
+          }
+        }
+
+        .grow {
+          flex-grow: 1;
+        }
+
+        .m-5 {
+          margin: 0 5px;
+        }
+
+        .p-dataview-layout-options {
+          display: inline-flex;
+          height: 45px;
+        }
+      }
+    }
+
+    .p-dataview-content {
+      height: calc(100% - 130px); // header & footer height
+      overflow: auto;
+    }
+  }
+
+  .checkbox {
+    position: absolute;
+    left: 0;
+    color: red;
+  }
+
+  .p-grid.p-nogutter {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .p-dropdown {
+    font-weight: normal;
+  }
+
+  .item-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item-grid-botton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+  .list-item-container {
+    width: 100%;
+    height: 50px;
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+      padding-left: 2rem;
+      position: relative;
+
+      &:hover {
+        background-color: var(--tertiary-bg-color);
+      }
+    }
+  }
+
+  .grid-item-container {
+    width: 33%;
+
+    .grid-item {
+      margin: 0.5em;
+      height: 200px;
+      padding: 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--secondary-bg-color);
+
+      &:hover {
+        background-color: var(--tertiary-bg-color);
+      }
+    }
+  }
+
+}
+
+
+

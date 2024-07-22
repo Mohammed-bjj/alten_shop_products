@@ -1,0 +1,13 @@
+<div class="navbar">
+  <div class="actions">
+    <!-- Switch mode -->
+    <app-theme-toggle-button></app-theme-toggle-button>
+
+    <!-- Admin -->
+    <div class="user-button">
+      <span *ngIf="isAuthenticated">{{ userName }}</span>
+      <button pButton icon={{iconAuth}} type="button" (click)="login()" class="p-button-rounded p-button-outlined"></button>
+    </div>
+  </div>
+
+</div>

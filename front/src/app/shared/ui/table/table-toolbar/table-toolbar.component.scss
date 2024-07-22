@@ -1,0 +1,15 @@
+.text-error {
+
+    position: relative;
+    left:  80%;
+}
+
+
+
+.centered-text {
+    text-align: center; /* Centre le texte horizontalement */
+    vertical-align: middle; /* Centre le texte verticalement (fonctionne bien avec une ligne de texte) */
+    padding: 0; /* Enlève les espaces par défaut */
+    height: auto; /* Ajuste la hauteur automatiquement en fonction du contenu */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+  }
