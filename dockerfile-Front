@@ -1,0 +1,17 @@
+FROM node:16-alpine
+
+# Create app directory
+WORKDIR /usr/src/app
+# add node_modules/.bin to $PATH
+# ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY front/package*.json ./
+
+RUN npm i -no-progress --omit=optional --loglevel=error && npm i -g @angular/cli@16.0.1 --no-progress --loglevel=error
+# Bundle app source
+COPY front/. /usr/src/app
+
+EXPOSE 4200 49153
+CMD [ "npm", "start" ]
