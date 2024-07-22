@@ -1,0 +1,18 @@
+backEnd/HELP.md
+backEnd/target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+
+
+### IntelliJ IDEA ###
+backEnd/.idea
+backEnd/*.iws
+backEnd/*.iml
+backEnd/*.ipr
+
+
+### VS Code ###
+front/.vscode/
+
