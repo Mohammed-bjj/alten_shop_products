@@ -36,6 +36,7 @@
    Une fois l'application démarrée, elle persiste une liste de produits, disponible dans le dossier  `backEnd/src/main/ressources/products.json`
 
    - **Documentation Swagger** :
+   
    Pour faciliter la compréhension de cette API, la documentation est disponinle via swagger [swagger](/docs/swagger.png)
      - Pour accéder à la documentation swagger lorsque l'application en cours d'exécution : http://localhost:8085/swagger-ui/index.html
     
