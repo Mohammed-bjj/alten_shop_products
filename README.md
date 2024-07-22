@@ -27,6 +27,7 @@
    Mise en place d'une API RESTfu, avec spring boot, permet de gérer les produits d'une manière complète en suivant le modèle CRUD (Create, Read, Update, Delete). Elle expose des endpoint pour créer, lire, mettre à jour et supprimer des produits.
 
    - **Parite Fonctionnalités** : 
+
     - L'API fournit les opérations fondamentales de CRUD pour les produits :
      - Créer un produit  -> Endpoint : `POST /api/admin/products`
      - Lire un Prduit    -> Endpoint : `GET /api/products/{id}` &&  Endpoint : `GET /api/products`
@@ -42,18 +43,41 @@
     
    - **Architecture** :
 
-   L'API est conçu selon une architecture en couche, permettant une séparation claire des responsabilité et une meilleure gestion de la complexité. [Architecture](/docs/architecture.png)
+   L'API est conçu selon une architecture en couche, permettant une séparation claire des responsabilité et une meilleure gestion de la complexité. [Architecture](/docs/architecture.png). Les trois couches sont faiblement couplé, c'est à dire qu'elle sont liées via des interfaces. 
 
+   La première couche, REST API, a la responsabilité de capturer les requêtes et de dispatcher l'opération à la couche de service. Cette dernière a pour rôle d'effectuer les traitements administratifs dans le contexte de cette application, ainsi que de récupérer et de persister les données dans la couche DAO (repository) lorsque cela est nécessaire.
+
+   - **Détail Technique** :
+
+Dans l'API, un ensemble de bonnes pratiques techniques a été mis en place, notamment :
+
+      - Les DTO d'entrée et de sortie qui valident les données selon le format attendu.
+      - Les mappers qui assurent la conversion des données d'un format à un autre.
+      - Un gestionnaire d'exceptions qui centralise la gestion des erreurs.
+      - La configuration de Logback et du logger pour tracer les messages.
+      - Les tests unitaires et la mesure de la couverture de code avec JaCoCo.
+      - Hibernate ORM pour la gestion de la persistance des données.
+      - L'empaquetage des images de l'API et de l'application Angular configuré dans un Dockerfile, avec Docker Compose.
+      - Docuementation swagger 
+      - Mise en place du module spring sécurité pour l'authentification et l'autorisation 
+      - Spring Data pour la gestion des opérations de persistance.
+
+
+
+   - **Lancement de l'application** :
+
+   Pour lancer l'application, il suffit d'éxécuter une commande docker compose suivante : docker-compose up --build. 
+   une fois les conteneurs démarrés, vous pouvez accéder à l'application : 
+       
+       - Coté front  Angular :  (http://localhost:4200)
+       - coté Back API : http://localhost:8085
+       - Console h2 databse : http://localhost:8085/h2-console
+       - http://localhost:8085/swagger-ui/index.html
 
 
 
 
    
-
-
-
-
-
 
 
 
