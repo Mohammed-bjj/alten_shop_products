@@ -9,7 +9,9 @@
   
   - **Partie-USER** : 
 
-       - Lecture et consultation des produits soit mode grid ou liste `docs`
+       - Lecture et consultation des produits soit mode grid ou liste 
+       [En Mode Grid](docs/grid.png)
+       [En Mode List](docs/list.png)
 
 # Réalisation Back-end
 
