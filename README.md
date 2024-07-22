@@ -1,4 +1,28 @@
-# spécification Front-end
+# Réalisation Front-end
+  - **Partie-Admin** : 
+
+       - Lecture et administration (CRUD) des Produits
+       - authenfication via une interface dédiée 
+       - sécurisation des routes admin via des guards
+       - Mise en place des interceptor pour injecter le token lors de l'envoi d'une requête 
+       - Mise en place des service qui manage le token 
+  
+  - **Partie-USER** : 
+
+       - Lecture et consultation des produits soit mode grid ou liste `docs`
+
+# Réalisation Back-end
+
+   
+
+
+
+
+
+
+
+
+# Spécification Front-end
 
 Créer un module angular "product" avec 2 composants (basés sur primeng): 
  - **products-admin** : qui liste les produits et qui permet de les administrer (ajouter, supprimer, modifier).
