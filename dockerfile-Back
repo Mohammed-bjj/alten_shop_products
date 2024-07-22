@@ -1,0 +1,22 @@
+# Phase de Build
+FROM maven:3.8.6-eclipse-temurin-17 AS build
+
+WORKDIR /app
+
+COPY backEnd/pom.xml .
+RUN mvn dependency:go-offline
+
+COPY backEnd/src ./src
+
+RUN mvn clean package -DskipTests
+
+# Phase Execution
+FROM eclipse-temurin:17-jdk-jammy
+
+WORKDIR /App
+
+COPY --from=build /app/target/*.jar app.jar
+
+EXPOSE 8085
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
