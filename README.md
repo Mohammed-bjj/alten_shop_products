@@ -1,19 +1,30 @@
 # Réalisation Front-end
+  
   - **Partie-Admin** : 
-
-       - Lecture et administration (CRUD) des Produits
-       - authenfication via une interface dédiée 
+  
+       - Lecture Produits
+       - Adminstration des produits :
+          - Ajout d'un produit
+          - Suppression d'un ou plusieur Produit 
+          - Mise à jour d'un produit
+   
        - sécurisation des routes admin via des guards
-       - Mise en place des interceptor pour injecter le token lors de l'envoi d'une requête 
-       - Mise en place des service qui manage le token 
+       - Mise en place des interceptors pour injecter le token lors de l'envoi d'une requête 
   
   - **Partie-USER** : 
-
+      
        - Lecture et consultation des produits soit mode grid ou liste 
        [En Mode Grid](docs/grid.png)
        [En Mode List](docs/list.png)
+   
+   - **Parties-Communes** : 
+      
+      - Authenfication (login & logout ) via une interface dédiée 
+      - Mise en place des services qui manage un token 
+
 
 # Réalisation Back-end
+
 
    
 
