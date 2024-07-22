@@ -28,13 +28,15 @@
 
    - **Parite Fonctionnalités** : 
    L'API fournit les opérations fondamentales de CRUD pour les produits :
-    1. Créer un produit  -> Endpoint : `POST /api/admin/products`
-    2. Lire un Prduit    -> Endpoint : `GET /api/products/{id}` &&  Endpoint : `GET /api/products`
-    3. Mettre à jour un produit -> Endpoint `PATCH  /api/admin/products`
-    4. Suppression d'un ou plusieur  produits -> Endpoint `DELETE  /api/admin/products/{id}` `/api/admin/products` 
+     - Créer un produit  -> Endpoint : `POST /api/admin/products`
+     - Lire un Prduit    -> Endpoint : `GET /api/products/{id}` &&  Endpoint : `GET /api/products`
+     - Mettre à jour un produit -> Endpoint `PATCH  /api/admin/products`
+     - Suppression d'un ou plusieur  produits -> Endpoint `DELETE  /api/admin/products/{id}` `/api/admin/products` 
+
+   Une fois l'application démarrée, elle persiste une liste de produits, disponible dans le dossier  `backEnd/src/main/ressources/products.json`
 
    - **Documentation Swagger** :
-   Pour faciliter la compréhension de cette API, la documentation est disponinle via swagger [swagger](/docs/list.png)
+   Pour faciliter la compréhension de cette API, la documentation est disponinle via swagger [swagger](/docs/swagger.png)
      - Pour accéder à la documentation swagger lorsque l'application en cours d'exécution : http://localhost:8085/swagger-ui/index.html
    
  
