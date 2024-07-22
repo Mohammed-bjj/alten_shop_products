@@ -1,4 +1,4 @@
-# Front-end
+# spécification Front-end
 
 Créer un module angular "product" avec 2 composants (basés sur primeng): 
  - **products-admin** : qui liste les produits et qui permet de les administrer (ajouter, supprimer, modifier).
@@ -29,7 +29,7 @@ Un système de pagination doit être mis en place pour pouvoir afficher les prod
 
 ![pagination](front/doc/pagination.png)
 
-# Back-end (optionnel)
+# spécification Back-end (optionnel)
 
 Si vous avez le temps vous pouvez développer un back-end permettant la gestion de produits définis plus bas.
 Vous pouvez utiliser la technologie de votre choix parmis la liste suivante :
