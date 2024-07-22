@@ -2,7 +2,7 @@
   - **Partie-Admin** : 
        - Consultation des Produits
        - Adminstration des produits :
-          - Ajout d'un produit
+          - Ajout un produit
           - Suppression d'un ou plusieur Produit 
           - Mise à jour d'un produit
        - sécurisation des routes admin via des guards
@@ -20,14 +20,14 @@
       - Mise en place des services qui manage un token 
 
 
-# Réalisation Back-end
+# Réalisations Back-end
 
    - **Overview** : 
 
    Mise en place d'une API RESTfu, avec spring boot, permet de gérer les produits d'une manière complète en suivant le modèle CRUD (Create, Read, Update, Delete). Elle expose des endpoint pour créer, lire, mettre à jour et supprimer des produits.
 
    - **Parite Fonctionnalités** : 
-   L'API fournit les opérations fondamentales de CRUD pour les produits :
+    - L'API fournit les opérations fondamentales de CRUD pour les produits :
      - Créer un produit  -> Endpoint : `POST /api/admin/products`
      - Lire un Prduit    -> Endpoint : `GET /api/products/{id}` &&  Endpoint : `GET /api/products`
      - Mettre à jour un produit -> Endpoint `PATCH  /api/admin/products`
@@ -38,9 +38,10 @@
    - **Documentation Swagger** :
    Pour faciliter la compréhension de cette API, la documentation est disponinle via swagger [swagger](/docs/swagger.png)
      - Pour accéder à la documentation swagger lorsque l'application en cours d'exécution : http://localhost:8085/swagger-ui/index.html
-   
- 
     
+   - **Architecture** :
+
+   L'API est conçu selon une architecture en couche, permettant une séparation claire des responsabilité et une meilleure gestion de la complexité. [Architecture](/docs/architecture.png)
 
 
 
