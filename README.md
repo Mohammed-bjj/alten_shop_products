@@ -1,13 +1,10 @@
-# Réalisation Front-end
-  
+# Réalisations Front-end
   - **Partie-Admin** : 
-  
-       - Lecture Produits
+       - Consultation des Produits
        - Adminstration des produits :
           - Ajout d'un produit
           - Suppression d'un ou plusieur Produit 
           - Mise à jour d'un produit
-   
        - sécurisation des routes admin via des guards
        - Mise en place des interceptors pour injecter le token lors de l'envoi d'une requête 
   
