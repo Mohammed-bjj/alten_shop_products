@@ -1,12 +1,18 @@
+## back
 backEnd/HELP.md
 backEnd/target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+backEnd/target/
+backEnd/.settings/
+backEnd/.classpath
+backEnd/.project
+
+
+
 
 
 
 ### IntelliJ IDEA ###
+front/node_modules/
 backEnd/.idea
 backEnd/*.iws
 backEnd/*.iml
@@ -15,4 +21,10 @@ backEnd/*.ipr
 
 ### VS Code ###
 front/.vscode/
+front/node_modules/
+front/.angular/
+front/.env
+
+
+
 
