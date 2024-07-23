@@ -76,6 +76,13 @@ Dans l'API, un ensemble de bonnes pratiques techniques a été mis en place, not
 
 
 
+   - **TEST** :
+
+Pour tester l'API, une collection de tests Postman est disponible à la racine du dépôt.
+
+
+
+
 
    
 
