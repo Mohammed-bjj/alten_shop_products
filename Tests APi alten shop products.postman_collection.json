@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "0fc18e8a-a0f7-42d1-8255-006f1e4d76d7",
+		"name": "Tests APi alten shop products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "15994893"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "Reading Product",
+					"item": [
+						{
+							"name": "Get all Products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTQyNDQ5OCwiaWF0IjoxNzIxNDIwODk4LCJzY29wZSI6IkFETUlOIn0.RakbTI8Zc3D9pd8jbGQQdeDdfViyv96dqZ6NfvRflIWLQm5DW1NexQNkE3xcuzY6ORFfePjWpMiE13C3PqYZ5A"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "content-Type",
+										"value": "application/json\n",
+										"type": "text"
+									}
+								],
+								"url": "http://localhost:8085/api/products"
+							},
+							"response": []
+						},
+						{
+							"name": "Get One Product by id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "http://localhost:8085/api/products/4"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Product not found",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8085/api/products/333"
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Add Product",
+					"item": [
+						{
+							"name": "Add new product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTY2MTI3NCwiaWF0IjoxNzIxNjU3Njc0LCJzY29wZSI6IkFETUlOIn0._3P8a5Lm1XGGlBXqQPBox_GeJRqdCEv9A_sV4Qv7nBu6bfwVmvsAA5iJO9sTSCXFbSQX4kjsnldI5FpLiqmxxQ"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\n        \"code\": \"f230fh0gggg3\",\n        \"name\": \"Bamboo Watch\",\n        \"description\": \"Product Description\",\n        \"price\": 65,\n        \"category\": \"Accessories\",\n        \"quantity\": 24,\n        \"inventoryStatus\": \"INSTOCK\",\n        \"rating\": 5,\n        \"image\": null\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8085/api/admin/products"
+							},
+							"response": []
+						},
+						{
+							"name": "Bad request - code & name not present",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTY2MTI3NCwiaWF0IjoxNzIxNjU3Njc0LCJzY29wZSI6IkFETUlOIn0._3P8a5Lm1XGGlBXqQPBox_GeJRqdCEv9A_sV4Qv7nBu6bfwVmvsAA5iJO9sTSCXFbSQX4kjsnldI5FpLiqmxxQ"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"description\": \"string\",\n  \"price\": 3,\n  \"quantity\": 2,\n  \"inventoryStatus\": \"string\",\n  \"category\": 1,\n  \"image\": \"string\",\n  \"rating\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8085/api/admin/products"
+							},
+							"response": []
+						},
+						{
+							"name": "add an existing product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTY2MTI3NCwiaWF0IjoxNzIxNjU3Njc0LCJzY29wZSI6IkFETUlOIn0._3P8a5Lm1XGGlBXqQPBox_GeJRqdCEv9A_sV4Qv7nBu6bfwVmvsAA5iJO9sTSCXFbSQX4kjsnldI5FpLiqmxxQ"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"code\": \"h456wer53\",\n        \"name\": \"Bracelet\",\n        \"description\": \"Product Description\",\n        \"price\": 15,\n        \"category\": \"Accessories\",\n        \"quantity\": 73,\n        \"inventoryStatus\": \"INSTOCK\",\n        \"rating\": 4,\n        \"image\": \"bracelet.jpg\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8085/api/admin/products"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"item": [
+						{
+							"name": "Delete one Product by id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTY2MTI3NCwiaWF0IjoxNzIxNjU3Njc0LCJzY29wZSI6IkFETUlOIn0._3P8a5Lm1XGGlBXqQPBox_GeJRqdCEv9A_sV4Qv7nBu6bfwVmvsAA5iJO9sTSCXFbSQX4kjsnldI5FpLiqmxxQ"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:8085/api/admin/products/4"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete All product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTQyNDQ5OCwiaWF0IjoxNzIxNDIwODk4LCJzY29wZSI6IkFETUlOIn0.RakbTI8Zc3D9pd8jbGQQdeDdfViyv96dqZ6NfvRflIWLQm5DW1NexQNkE3xcuzY6ORFfePjWpMiE13C3PqYZ5A"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:8085/api/admin/products"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete product not found",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTY2MTI3NCwiaWF0IjoxNzIxNjU3Njc0LCJzY29wZSI6IkFETUlOIn0._3P8a5Lm1XGGlBXqQPBox_GeJRqdCEv9A_sV4Qv7nBu6bfwVmvsAA5iJO9sTSCXFbSQX4kjsnldI5FpLiqmxxQ"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:8085/api/admin/products/100"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update product",
+					"item": [
+						{
+							"name": "update product filtred by id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTY2MTI3NCwiaWF0IjoxNzIxNjU3Njc0LCJzY29wZSI6IkFETUlOIn0._3P8a5Lm1XGGlBXqQPBox_GeJRqdCEv9A_sV4Qv7nBu6bfwVmvsAA5iJO9sTSCXFbSQX4kjsnldI5FpLiqmxxQ"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "   {\n        \"code\": \"de\",\n        \"name\": \"Blue T-Shirt ff\",\n        \"description\": \"Product Description\",\n        \"price\": 4,\n        \"category\": \"Clothing\",\n        \"quantity\": 25,\n        \"inventoryStatus\": \"INSTOCK\",\n        \"rating\": 5,\n        \"image\": \"blue-t-shirt.jpg\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8085/api/admin/products/5"
+							},
+							"response": []
+						},
+						{
+							"name": "bad request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTY2MTI3NCwiaWF0IjoxNzIxNjU3Njc0LCJzY29wZSI6IkFETUlOIn0._3P8a5Lm1XGGlBXqQPBox_GeJRqdCEv9A_sV4Qv7nBu6bfwVmvsAA5iJO9sTSCXFbSQX4kjsnldI5FpLiqmxxQ"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"description\": \"string\",\n  \"price\": 3,\n  \"quantity\": 2,\n  \"inventoryStatus\": \"string\",\n  \"category\": 1,\n  \"image\": \"string\",\n  \"rating\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8085/api/admin/products/5"
+							},
+							"response": []
+						},
+						{
+							"name": "product not found",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTU3ODk2NSwiaWF0IjoxNzIxNTc1MzY1LCJzY29wZSI6IkFETUlOIn0.N0wj3KJcqt_7GYRSwiDtfLpXWXszfUecEj91z7NT_7tcHO5UWQUBhJZUAfYnN5LIvXyoSikowHPm2rIH1qQtjg"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n        \"code\": \"f230fh0g3\",\n        \"name\": \"Bamboo Watch gg\",\n        \"description\": \"Product Description\",\n        \"price\": 65,\n        \"category\": \"Accessories\",\n        \"quantity\": 24,\n        \"inventoryStatus\": \"INSTOCK\",\n        \"rating\": 5,\n        \"image\": null\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8085/api/admin/products/100"
+							},
+							"response": []
+						},
+						{
+							"name": "Error: code other product is the same as current product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTU3ODk2NSwiaWF0IjoxNzIxNTc1MzY1LCJzY29wZSI6IkFETUlOIn0.N0wj3KJcqt_7GYRSwiDtfLpXWXszfUecEj91z7NT_7tcHO5UWQUBhJZUAfYnN5LIvXyoSikowHPm2rIH1qQtjg"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "   {\n        \"code\": \"f230fh0g3\",\n        \"name\": \"Blue T-Shirt ff\",\n        \"description\": \"Product Description\",\n        \"price\": 4,\n        \"category\": \"Clothing\",\n        \"quantity\": 25,\n        \"inventoryStatus\": \"INSTOCK\",\n        \"rating\": 5,\n        \"image\": \"blue-t-shirt.jpg\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8085/api/admin/products/5"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth User",
+			"item": [
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8085/auth/login"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyMTQwNjc3NiwiaWF0IjoxNzIxNDAzMTc2LCJzY29wZSI6IkFETUlOIn0.HhvR7_E0xGMXytcEy6EK_1VG4YOQVWXAR4didG776VXssUoihmFBbFjnM2yEtRRrjoKRUoBgiBFKkrBUWdrziQ"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
