@@ -26,20 +26,29 @@ public class Product {
     private Long id;
 
 
-    @NotNull(message = "Code is required")
     @NotBlank(message = "Code is required")
     private String code;
 
-    @NotNull(message = "Name is required")
     @NotBlank(message = "Name is required")
     private String name;
 
-
+    @NotBlank(message = "Description is required")
     private String description;
+
+    @NotNull(message = "Price is required")
+    @PositiveOrZero(message = "Price must be positive or zero")
     private Long price=0L;
+
+    @NotNull(message = "Quantity is required")
+    @PositiveOrZero(message = "Quantity must be positive or zero")
     private Long quantity=0L;
+
+    @NotBlank(message = "InventoryStatus is required")
     private String inventoryStatus = String.valueOf(StatusStock.OUTOFSTOCK);
+
+    @NotBlank(message = "Category is required")
     private String category;
+
     private Long rating;
     private String image;
 
@@ -47,29 +56,14 @@ public class Product {
 
     @Override
     public boolean equals(Object obj) {
-        System.out.println("Init");
         if (this == obj) {
-            System.out.println("1");
-
             return true; // Réflexivité
         }
         if (obj == null ) {
-            System.out.println("2");
-
             return false;   // null
         }
         System.out.println("3");
-
         InputProductDTO dto = (InputProductDTO) obj;
-
-
-        boolean isv = this.name.trim().equals(dto.getName().trim()) &&
-                this.description.trim().equals(dto.getDescription()) &&
-                this.price == dto.getPrice() &&
-                this.quantity == dto.getQuantity() &&
-                this.inventoryStatus.trim().equals(dto.getInventoryStatus().trim()) &&
-                this.category.trim().equals(dto.getCategory().trim()) ;
-        System.out.println("4 : "+ isv);
 
         return  this.name.trim().equals(dto.getName().trim()) &&
                 this.description.trim().equals(dto.getDescription()) &&

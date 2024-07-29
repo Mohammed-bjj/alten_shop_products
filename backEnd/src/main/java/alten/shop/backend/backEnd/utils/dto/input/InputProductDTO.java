@@ -6,24 +6,30 @@ import lombok.Data;
 @Data
 public class InputProductDTO {
 
-    @NotNull(message = "Code is required")
     @NotBlank(message = "Code is required")
     private String code;
 
-    @NotNull(message = "Name is required")
     @NotBlank(message = "Name is required")
     private String name;
 
-    private String description = "";
 
+    @NotBlank(message = "Description is required")
+    private String description;
+
+    @NotNull(message = "Price is required")
     @PositiveOrZero(message = "Price must be positive or zero")
-    private Long price = 0L;
+    private Long price;
 
-    private String category = "";
+    @NotBlank(message = "Category is required")
+    private String category;
 
+    @NotNull(message = "Quantity is required")
     @PositiveOrZero(message = "Quantity must be positive or zero")
-    private Long quantity = 0L;
+    private Long quantity ;
 
+
+
+    @NotBlank(message = "InventoryStatus is required")
     private String inventoryStatus = "";
 
     private Long rating = 0L;
