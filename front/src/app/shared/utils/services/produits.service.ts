@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Product, ProductsResponse } from 'app/shared/ui/list/search.model';
+import { Product } from 'app/shared/ui/list/search.model';
 import { routeAdminProducts,routeUserProducts } from './configUrl';
+import { NewProductRequest, ProductResponse } from 'app/models/product.model';
 
 
 @Injectable()
@@ -16,13 +17,13 @@ export class ProductServiceHttp {
   constructor(private http: HttpClient) { }
 
    
-  public getProducts(): Observable<ProductsResponse> {
-    return this.http.get<ProductsResponse>(routeUserProducts);
+  public getProducts(): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(routeUserProducts);
   }
 
 
-  public getOneProductsFilteredBy(productID: number): Observable<ProductsResponse> {
-    return this.http.get<ProductsResponse>(`${routeUserProducts}/${productID}`);
+  public getOneProductsFilteredBy(productID: number): Observable<Product> {
+    return this.http.get<Product>(`${routeUserProducts}/${productID}`);
   }
 
   
@@ -33,7 +34,7 @@ export class ProductServiceHttp {
 
 
 
-  public saveProduct(product: Product): Observable<Product> {
+  public saveProduct(product: NewProductRequest): Observable<Product> {
     return this.http.post<Product>(`${routeAdminProducts}`, product);
   }
     

@@ -26,9 +26,6 @@ export interface SearchParams {
 
 
 
-  export interface ProductsResponse {
-    data: Product[];
-  }
 
   export interface Product {
     id: number;

@@ -21,6 +21,11 @@ export class EditionDialogComponent<T> {
   
   public onFormChanged(event: { value: T; valid?: boolean }): void {
     this.editedEntry = event.value;
+    for(const key in this.editedEntry){
+      if(key != 'rating' && !this.editedEntry[key]){
+        return;
+      }
+    }
     this.invalidForm = !event.valid;
   }
 

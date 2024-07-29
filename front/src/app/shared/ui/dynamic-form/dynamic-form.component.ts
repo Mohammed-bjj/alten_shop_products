@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { CrudItemOptions } from 'app/shared/utils/crud-item-options/crud-item-options.model';
 import { debounceTime } from 'rxjs/operators';
 import { DynamicFormService } from './dynamic-form.service';
+import { ControlType } from 'app/models/product.model';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -25,6 +26,19 @@ export class DynamicFormComponent<T> implements OnInit {
 
   }
 
+
+
+  /**
+   *   const dateCtrls = this.controlsWithValues.filter(control => control.controlType === 'date') || [];
+      dateCtrls.forEach((ctrl) => {
+        console.log("changed ... ");
+
+        if (formValue[ctrl.key]) {
+          formValue[ctrl.key] = new Date(formValue[ctrl.key]).getTime();
+        }
+      });
+   */
+
   ngOnInit(): void {
     this.assignValues();
 
@@ -33,13 +47,6 @@ export class DynamicFormComponent<T> implements OnInit {
     this.form.valueChanges.pipe(
       debounceTime(300),
     ).subscribe(formValue => {
-      // Must convert date values from Date to number...
-      const dateCtrls = this.controlsWithValues.filter(control => control.controlType === 'date') || [];
-      dateCtrls.forEach((ctrl) => {
-        if (formValue[ctrl.key]) {
-          formValue[ctrl.key] = new Date(formValue[ctrl.key]).getTime();
-        }
-      });
       // Emit changes
       this.formChanged.emit({ value: formValue, valid: this.form.valid });
     });

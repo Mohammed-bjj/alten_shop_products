@@ -42,6 +42,7 @@ export class DynamicFormControlComponent<T> {
   }
 
   get isRequired(): boolean {
+    console.log("ldldl : ", !this.formCtrl.hasValidator(Validators.required))
     return this.formCtrl.hasValidator(Validators.required);
   }
 

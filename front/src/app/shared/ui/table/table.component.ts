@@ -7,10 +7,9 @@ import { LazyLoadEvent, SelectItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { TableColumn } from './table-column.model';
 import { ControlType } from 'app/shared/utils/crud-item-options/control-type.model';
-import { ProductsResponse } from '../list/search.model';
 import { ProductServiceHttp } from 'app/shared/utils/services/produits.service';
-import { TABLE_CONFIG } from './table-config';
-import { Product } from 'app/models/product.model';
+import { TABLE_CONFIG, TABLE_CONFIG_EDIT } from './table-config';
+import { Product, ProductResponse } from 'app/models/product.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -23,7 +22,7 @@ export class TableComponent<T extends Product> implements OnChanges {
   @Input() public  data: T[] = [];
 
   // col.filterable && col.isVisible && !col.hidden
-  @Input() public readonly config: CrudItemOptions[] = TABLE_CONFIG; // config for table 
+  @Input() public  config: CrudItemOptions[] = TABLE_CONFIG; // config for table 
   @Input() public readonly editableRows: boolean = true;
   @Input() public readonly deletableRows: boolean = false;
   @Input() public readonly selectable: boolean = true;
@@ -63,7 +62,7 @@ export class TableComponent<T extends Product> implements OnChanges {
       this.entity = data['data'];
     });
     
-    this.produitServcie.getProducts().subscribe( (products: ProductsResponse) => {       
+    this.produitServcie.getProducts().subscribe( (products: ProductResponse) => {       
       this.data = products.data as [T];
     });
 
@@ -98,6 +97,7 @@ export class TableComponent<T extends Product> implements OnChanges {
     this.titleHeader = `${rowData.name} Details`
     this.editedEntry = {...rowData};
     this.creation = false ;
+    this.config = TABLE_CONFIG_EDIT;
     this.entryEditionDialogDisplayed = true;
 
   }
@@ -145,18 +145,30 @@ export class TableComponent<T extends Product> implements OnChanges {
     this.titleHeader = "Add New Product";
     this.entryEditionDialogDisplayed = true;
     this.creation = true;
+    this.config = TABLE_CONFIG_EDIT;
     this.editedEntry = new this.entity() ;
   }
 
+  private updateEntry(product: Product): void{
+
+      this.data.forEach( (data: Product) => {
+        if(data.id == product.id){
+          Object.assign(data, product);
+        }
+      })
+  }
+    
   public onEditedEntrySave(editedEntry): void {
     this.errorMessage=null;
     if(this.creation){
       this.produitServcie.saveProduct(editedEntry).subscribe({
         next: (data: Product) => {
-          this.data.push(data as T);
+          this.data.unshift(data as T);
           this.errorMessage = "Product added successfully";
         },
-        error: (err) =>  {  console.log(err.error);  this.errorMessage = err.error }
+        error: (err) =>  {  
+          console.log(err.error);  
+          this.errorMessage = "Product addition failed" }
       });
     }else {
       editedEntry = {
@@ -165,16 +177,7 @@ export class TableComponent<T extends Product> implements OnChanges {
       }
       this.produitServcie.updateProduct(editedEntry).subscribe(
         {
-          next: (data: Product) =>
-             {
-               this.data.forEach( (product: Product) => 
-                {
-                 if(data.id == product.id){
-                  product.code = data.code;
-                  product.name = data.name;
-                 }
-                });
-              },
+          next: (product: Product) => this.updateEntry(product),
           error: (err) => 
             {
               console.log("error : ", err.error);

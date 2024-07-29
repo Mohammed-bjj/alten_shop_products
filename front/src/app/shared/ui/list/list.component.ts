@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { DEFAULT_SEARCH_PARAMS, ProductsResponse, SearchParams, Sort } from 'app/shared/ui/list/search.model';
+import { DEFAULT_SEARCH_PARAMS, SearchParams, Sort } from 'app/shared/ui/list/search.model';
 import { PrimeNGConfig, SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { debounceTime } from 'rxjs/operators';
 import { ListService } from './list.service';
 import { ProductServiceHttp } from 'app/shared/utils/services/produits.service';
+import { ProductResponse } from 'app/models/product.model';
 
 
 export interface ListHeaderOptionsBase {
@@ -76,7 +77,7 @@ export class ListComponent<T> implements OnInit {
   }
 
   private loadProducts():void {
-    this.produitServcie.getProducts().subscribe( (products: ProductsResponse ) => {
+    this.produitServcie.getProducts().subscribe( (products: ProductResponse ) => {
       this.items = products.data as T[];
   });
   }
@@ -166,7 +167,5 @@ export class ListComponent<T> implements OnInit {
   private emitFilters(): void {
     this.filtered.emit(this.searchParams);
   }
-
-
 
 }
