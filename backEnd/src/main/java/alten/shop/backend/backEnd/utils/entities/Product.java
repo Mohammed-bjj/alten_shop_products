@@ -62,15 +62,14 @@ public class Product {
         if (obj == null ) {
             return false;   // null
         }
-        System.out.println("3");
         InputProductDTO dto = (InputProductDTO) obj;
-
         return  this.name.trim().equals(dto.getName().trim()) &&
                 this.description.trim().equals(dto.getDescription()) &&
                 this.price == dto.getPrice() &&
                 this.quantity == dto.getQuantity() &&
                 this.inventoryStatus.trim().equals(dto.getInventoryStatus().trim()) &&
-                this.category.trim().equals(dto.getCategory().trim()) ;
+                this.category.trim().equals(dto.getCategory().trim()) &&
+                this.rating == dto.getRating() ;
     }
     
 
