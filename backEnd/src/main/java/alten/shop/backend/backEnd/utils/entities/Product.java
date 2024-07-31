@@ -27,6 +27,7 @@ public class Product {
 
 
     @NotBlank(message = "Code is required")
+    @Column(unique = true)
     private String code;
 
     @NotBlank(message = "Name is required")
@@ -51,27 +52,4 @@ public class Product {
 
     private Long rating;
     private String image;
-
-
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true; // Réflexivité
-        }
-        if (obj == null ) {
-            return false;   // null
-        }
-        InputProductDTO dto = (InputProductDTO) obj;
-        return  this.name.trim().equals(dto.getName().trim()) &&
-                this.description.trim().equals(dto.getDescription()) &&
-                this.price == dto.getPrice() &&
-                this.quantity == dto.getQuantity() &&
-                this.inventoryStatus.trim().equals(dto.getInventoryStatus().trim()) &&
-                this.category.trim().equals(dto.getCategory().trim()) &&
-                this.rating == dto.getRating() ;
-    }
-    
-
-
 }

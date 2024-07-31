@@ -1,6 +1,7 @@
 package alten.shop.backend.backEnd.utils.config;
 
 
+import alten.shop.backend.backEnd.services.AuthService;
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -56,8 +58,16 @@ public class ConfigSecurity {
 
 
 
+
+  //  public UserDetails loadUserDetails(String usernameUser){
+  //      AuthService authService = usernameUser.lo
+    //  UserDetails = USer . withUsername() . password . roles
+    //   return userDetail
+  //  }
+
     @Bean
     public InMemoryUserDetailsManager  inMemoryUserDetailsManager(){
+
         PasswordEncoder passwordEncoder = passwordEncoder();
         return new InMemoryUserDetailsManager(
                 User.withUsername(this.usernameUser).password(passwordEncoder.encode(this.pwd)).authorities("USER").build(),
@@ -99,6 +109,7 @@ public class ConfigSecurity {
 
     @Bean
     JwtEncoder jwtEncoder(){
+
         return new NimbusJwtEncoder( new ImmutableSecret<>(secretKey.getBytes()));
     }
 

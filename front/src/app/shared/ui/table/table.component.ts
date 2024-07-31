@@ -54,6 +54,7 @@ export class TableComponent<T extends Product> implements OnChanges {
   ) {
     this.loadProducts();
     this.cols = this.getColumns(); 
+    this.cols.forEach((col) => col.isVisible = (col.key == "code" || col.key == "name") ? true : false );
   }
 
 
@@ -209,6 +210,7 @@ export class TableComponent<T extends Product> implements OnChanges {
   }
 
   private getColumns(): TableColumn[] {
+    this.config = TABLE_CONFIG_EDIT;
     return this.config.map(item => {
       const renderedValue = (cellValue: unknown, isTooltip = false) => this.getRenderer(cellValue, item, isTooltip);
       const columnOptions = item.columnOptions;

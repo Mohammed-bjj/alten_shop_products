@@ -2,7 +2,6 @@ package alten.shop.backend.backEnd.services;
 
 
 import alten.shop.backend.backEnd.utils.dto.input.InputUserDTO;
-import alten.shop.backend.backEnd.utils.exceptions.UserNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +16,9 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+
+
 @AllArgsConstructor
 @Service
 public class AuthService {

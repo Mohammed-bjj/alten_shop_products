@@ -84,16 +84,6 @@ public class ServiceproductImpl implements IServiceProducts {
     public OutputProductDTO updateProduct(Long productID, InputProductDTO inputProductDTO) throws  Exception, ProductNotFoundException {
         Product existingProduct = this.productRepository.findById(productID)
                 .orElseThrow(() ->  new ProductNotFoundException("Product not found") );
-                
-        if(existingProduct.getCode() != inputProductDTO.getCode() ){
-            if(existingProduct.equals(inputProductDTO)){
-                Product isExistProduct = this.productRepository.findByCode(inputProductDTO.getCode());
-                if(isExistProduct != null){
-                    throw new ExistProductException("This code product already exists");
-                }
-            }
-            System.out.println("nn eg");
-        }
 
         BeanUtils.copyProperties(inputProductDTO, existingProduct);
         try {
