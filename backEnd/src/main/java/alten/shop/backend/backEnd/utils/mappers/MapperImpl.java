@@ -29,6 +29,7 @@ public class MapperImpl implements  IMapper{
 
     @Override
     public Product fromInputProductDTO(InputProductDTO inputProductDTO) {
+        System.out.println("med : "+ inputProductDTO.getCategory());
         Product product = new Product();
         BeanUtils.copyProperties(inputProductDTO, product);
         return product;

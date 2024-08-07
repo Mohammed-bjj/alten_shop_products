@@ -2,6 +2,8 @@ package alten.shop.backend.backEnd.utils.dto.output;
 
 
 
+import alten.shop.backend.backEnd.utils.enums.Category;
+import alten.shop.backend.backEnd.utils.enums.StatusStock;
 import lombok.Data;
 import jakarta.validation.constraints.*;
 
@@ -25,15 +27,15 @@ public class OutputProductDTO {
      @PositiveOrZero(message = "Price must be positive or zero")
      private Long price;
 
-     @NotBlank(message = "Category is required")
-     private String category;
+     @NotNull(message = "Category is required")
+     private Category category;
 
      @NotNull(message = "Quantity must not be null")
      @PositiveOrZero(message = "Quantity must be positive or zero")
      private Long quantity;
 
      @NotNull(message = "Inventory status must not be null")
-     private String inventoryStatus;
+     private StatusStock inventoryStatus;
 
      private Long rating ;
      private String image;

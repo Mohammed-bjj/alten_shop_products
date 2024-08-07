@@ -2,6 +2,7 @@ package alten.shop.backend.backEnd.utils.entities;
 
 
 import alten.shop.backend.backEnd.utils.dto.input.InputProductDTO;
+import alten.shop.backend.backEnd.utils.enums.Category;
 import alten.shop.backend.backEnd.utils.enums.StatusStock;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -44,11 +45,11 @@ public class Product {
     @PositiveOrZero(message = "Quantity must be positive or zero")
     private Long quantity=0L;
 
-    @NotBlank(message = "InventoryStatus is required")
-    private String inventoryStatus = String.valueOf(StatusStock.OUTOFSTOCK);
+    @NotNull(message = "InventoryStatus is required")
+    private StatusStock inventoryStatus;
 
-    @NotBlank(message = "Category is required")
-    private String category;
+    @NotNull(message = "Category is required")
+    private Category category;
 
     private Long rating;
     private String image;

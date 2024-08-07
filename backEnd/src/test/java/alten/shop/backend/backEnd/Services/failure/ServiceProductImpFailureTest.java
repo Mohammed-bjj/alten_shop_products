@@ -6,6 +6,8 @@ import alten.shop.backend.backEnd.services.ServiceproductImpl;
 import alten.shop.backend.backEnd.utils.dto.input.InputProductDTO;
 import alten.shop.backend.backEnd.utils.dto.output.OutputProductDTO;
 import alten.shop.backend.backEnd.utils.entities.Product;
+import alten.shop.backend.backEnd.utils.enums.Category;
+import alten.shop.backend.backEnd.utils.enums.StatusStock;
 import alten.shop.backend.backEnd.utils.exceptions.ProductNotFoundException;
 
 import alten.shop.backend.backEnd.utils.mappers.IMapper;
@@ -59,9 +61,9 @@ public class ServiceProductImpFailureTest {
         product.setName("Bamboo Watch");
         product.setDescription("Product Description");
         product.setPrice(65L);
-        product.setCategory("Accessories");
+        product.setCategory(Category.ACCESSORIES);
         product.setQuantity(24L);
-        product.setInventoryStatus("INSTOCK");
+        product.setInventoryStatus(StatusStock.INSTOCK);
         product.setRating(5L);
         product.setImage("black-watch.jpg");
 
@@ -71,9 +73,9 @@ public class ServiceProductImpFailureTest {
         outputProductDTO.setName("Bamboo Watch");
         outputProductDTO.setDescription("Product Description");
         outputProductDTO.setPrice(65L);
-        outputProductDTO.setCategory("Accessories");
+        outputProductDTO.setCategory(Category.ACCESSORIES);
         outputProductDTO.setQuantity(24L);
-        outputProductDTO.setInventoryStatus("INSTOCK");
+        outputProductDTO.setInventoryStatus(StatusStock.INSTOCK);
         outputProductDTO.setRating(5L);
         outputProductDTO.setImage("black-watch.jpg");
 
@@ -82,9 +84,9 @@ public class ServiceProductImpFailureTest {
         inputProductDTO.setName("Bamboo Watch");
         inputProductDTO.setDescription("Product Description");
         inputProductDTO.setPrice(65L);
-        inputProductDTO.setCategory("Accessories");
+        inputProductDTO.setCategory(Category.ACCESSORIES);
         inputProductDTO.setQuantity(24L);
-        inputProductDTO.setInventoryStatus("INSTOCK");
+        inputProductDTO.setInventoryStatus(StatusStock.INSTOCK);
         inputProductDTO.setRating(5L);
         inputProductDTO.setImage("black-watch.jpg");
     }

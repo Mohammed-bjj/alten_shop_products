@@ -20,6 +20,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.cache.annotation.Cacheable;
+
+
 @AllArgsConstructor
 @Service
 public class ServiceproductImpl implements IServiceProducts {
@@ -35,7 +38,9 @@ public class ServiceproductImpl implements IServiceProducts {
      * @throws ProductNotFoundException
      */
     @Override
+    //@Cacheable(value = "products", key = "'allProducts'")
     public Map<String, List<OutputProductDTO>> productsList() throws ProductNotFoundException {
+        System.out.println("From db");
         List<Product> products = this.productRepository.findAll();
         if(products.isEmpty()) throw  new ProductNotFoundException("No products found");
         List<OutputProductDTO> productDTOs = products
@@ -65,6 +70,7 @@ public class ServiceproductImpl implements IServiceProducts {
 
     @Override
     public OutputProductDTO saveNewProduct(InputProductDTO inputProductDTO) throws Exception, ExistProductException {
+        System.out.println(inputProductDTO.getCategory());
         Product existingProduct = this.productRepository.findByCode(inputProductDTO.getCode());
         if(existingProduct != null){
             throw new ExistProductException("This product already exists");
