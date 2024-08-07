@@ -46,9 +46,11 @@ public class Product {
     private Long quantity=0L;
 
     @NotNull(message = "InventoryStatus is required")
+    @Enumerated(EnumType.STRING)
     private StatusStock inventoryStatus;
 
     @NotNull(message = "Category is required")
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     private Long rating;
